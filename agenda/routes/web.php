@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'pessoas'], function(){
-    Route::get('/', 'PessoaController@index');
+    Route::get('/', 'PessoasController@index');
 });
 
 // Route::group(['prefix' => 'teste'], function(){
