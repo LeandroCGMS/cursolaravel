@@ -11,6 +11,6 @@ class PessoaController extends Controller
         $list_pessoas = Pessoa::all();
         return view('pessoas.index', [
             'pessoas' => $list_pessoas
-        ]);
+        ]); // 8:24
     }
 }
