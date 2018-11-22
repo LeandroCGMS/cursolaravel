@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pessoa;
 use Illuminate\Http\Request;
 
 class PessoasController extends Controller
