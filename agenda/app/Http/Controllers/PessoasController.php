@@ -14,4 +14,15 @@ class PessoasController extends Controller
             'pessoas' => $list_pessoas
         ]); // 8:24
     }
+
+    public function novoView()
+    {
+        return view('pessoas.create');
+    }
+
+    public function store(Request $request)
+    {
+        Pessoa::create($request->all());
+        return redirect("/pessoas")->with("message", "Pessoa criada com sucesso.");
+    }
 }
