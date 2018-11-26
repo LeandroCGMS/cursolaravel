@@ -59,7 +59,7 @@ class PessoasController extends Controller
     public function editarView($id) 
     {
         return view('pessoas.edit', [
-            'pessoa' => $this->getPessoa($id)
+            'pessoa' => $this->getPessoa($id) //Teste de edição
         ]);
     }
 
