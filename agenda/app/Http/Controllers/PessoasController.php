@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use App\Pessoa;
 use Illuminate\Http\Request;
 use App\Telefone;
@@ -32,6 +33,14 @@ class PessoasController extends Controller
 
     public function store(Request $request)
     {
+        $validacao = $this->validacao($request->all());
+
+        if($validacao->fails()){
+            return redirect()->back()
+            ->withErrors($validacao->errors())
+            ->withInput($request->all());
+        }
+
         $pessoa = Pessoa::create($request->all());
         if($request->ddd && $request->telefone){
             $telefone = new Telefone();
@@ -65,6 +74,13 @@ class PessoasController extends Controller
 
     public function update(Request $request)
     {
+        $validacao = $this->validacao($request->all());
+
+        if($validacao->fails()){
+            return redirect()->back()
+            ->withErrors($validacao->errors())
+            ->withInput($request->all());
+        }
         $pessoa = $this->getPessoa($request->id);
         $pessoa->update($request->all());
 
@@ -74,5 +90,27 @@ class PessoasController extends Controller
     protected function getPessoa($id)
     {
         return $this->pessoa->find($id);
+    }
+
+    private function validacao($data)
+    {
+        if(array_key_exists('ddd', $data) && array_key_exists('telefone', $data)) {
+            if($data['ddd'] || $data['telefone']){
+                $regras['ddd'] = 'required|size:2';
+                $regras['telefone'] = 'required';
+            }
+        }
+        
+        $regras['nome'] = 'required|min:3';
+
+        $mensagens = [
+            'nome.required' => 'Campo nome é obrigatório.',
+            'nome.min' => 'Campo nome deve ter, ao menos, 3 letras.',
+            'ddd.required' => 'Campo ddd é obrigatório.',
+            'ddd.size' => 'Campo ddd deve ter 2 dígitos.',
+            'telefone.required' => 'Campo telefone é obrigatório.'
+        ]; 
+
+        return Validator::make($data, $regras, $mensagens);
     }
 }
