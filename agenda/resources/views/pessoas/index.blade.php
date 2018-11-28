@@ -8,7 +8,22 @@
         float: right;
     }
 </style>
+
 <div>
+    <div class="col-sm-12 btn-group btn-group-justified" 
+    style="padding-bottom: 10px;">
+        @foreach(range('A','Z') as $letra)
+            <div class="btn-group">
+                <a href="{{ url('pessoas/' . $letra) }}" class="btn btn-primary {{ $letra === $criterio ? 'disabled' : '' }}">
+                    {{ $letra }}
+                </a>
+            </div>
+        @endforeach
+    </div>
+    <div class="col-sm-12">
+    <h1>Critério: {{ $criterio }}</h1>
+    </div>    
+
     @foreach($pessoas as $pessoa)
     <div class="col-md-3">
         <div class="panel panel-info">
