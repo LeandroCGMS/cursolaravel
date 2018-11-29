@@ -21,4 +21,9 @@ class Pessoa extends Model
     {
         return static::where('nome', 'LIKE', $letra . '%')->get();
     }
+
+    public static function busca($criterio)
+    {
+        return static::where('nome', 'LIKE', '%' . $criterio .'%')->get();
+    }
 }

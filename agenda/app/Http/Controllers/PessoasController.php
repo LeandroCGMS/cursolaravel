@@ -27,6 +27,16 @@ class PessoasController extends Controller
         ]);
     }
 
+    public function busca(Request $request)
+    {
+        $pessoas = Pessoa::busca($request->criterio);
+
+        return view('pessoas.index', [
+            'pessoas' => $pessoas, 
+            'criterio' => $request->criterio
+            ]);
+    }
+
     public function novoView()
     {
         return view('pessoas.create');
