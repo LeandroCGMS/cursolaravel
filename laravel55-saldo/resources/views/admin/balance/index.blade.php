@@ -12,8 +12,8 @@
 
 @section('content')
     <div class="box">
-        <div class="header">
-            <a href="" class="btn btn-primary">
+        <div class="box-header">
+            <a href="{{ route('balance.deposit') }}" class="btn btn-primary">
             <i class="fa fa-cart-plus" aria-hidden="true"></i>
             Recarregar
             </a>
