@@ -33,7 +33,7 @@ class Upload {
                 $this->Arquivo = $_FILES[$campo]['name'];
                 if($this->ehArquivoPermitido($this->Arquivo)){
                     // a extensão do arquivo é válida
-                    $arqDestino = $pastaDestino .'/'. $this->Arquivo;
+                    $arqDestino = $pastaDestino .'/'. $this->Arquivo; // exemplo: imagens/nodoarquivo.png
                 }
 
                 if(!$sobrescrever){
