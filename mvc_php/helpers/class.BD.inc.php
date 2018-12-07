@@ -63,6 +63,10 @@
             $bd->Fechar();
             $this->BD = $bd;
         }
+
+        public function Linhas(){
+            
+        }
     }
 
 
