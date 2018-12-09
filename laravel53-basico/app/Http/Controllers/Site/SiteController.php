@@ -28,7 +28,10 @@ class SiteController extends Controller
     }
 
     public function index() {
-        return '<h1>Home Page do Site</h1>';
+        $teste = 123;
+        $teste2 = 321;
+        $teste3 = 132;
+        return view('site.home.teste', compact('teste', 'teste2', 'teste3'));
     }
 
     public function contato() {
