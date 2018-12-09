@@ -7,6 +7,26 @@ use App\Http\Controllers\Controller;
 
 class SiteController extends Controller
 {
+
+    public function __construct() {
+        //$this->middleware('auth');
+        /*
+        $this->middleware('auth')
+        ->only([
+            'contato',
+            'categoria'
+        ]);
+        */
+        /*
+        $this->middleware('auth')
+        ->except([
+            'index',
+            'contato'
+        ]);
+        */
+        
+    }
+
     public function index() {
         return '<h1>Home Page do Site</h1>';
     }
