@@ -42,3 +42,7 @@ echo "<h4>Função PHP chamada dentro do @php do Laravel</h4>";
 
 
 @endsection
+
+@push('scripts')
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+@endpush
