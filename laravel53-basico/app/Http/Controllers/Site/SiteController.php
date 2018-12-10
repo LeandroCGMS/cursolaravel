@@ -30,7 +30,9 @@ class SiteController extends Controller
     public function index() {
         $title = 'Título Passado por variável';
         $xss = '<script>alert("Ataque XSS");</script>';
-        return view('site.home.index', compact('title','xss'));
+        $var1 = '123';
+        $arrayData = []; // [1,2,3,4,5,6,7,8,9]
+        return view('site.home.index', compact('title','xss', 'var1','arrayData'));
     }
 
     public function contato() {

@@ -1,4 +1,4 @@
 $(document).ready(function(){
-   alert("Sucesso.") ;
+   console.log("Função JQuery realizada com sucesso.");
 });
 
