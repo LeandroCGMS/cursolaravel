@@ -106,6 +106,7 @@ class ProdutoController extends Controller
         else
             return 'Falha ao inserir.';
          */
+        /*
         $insert = $this->product->create([
                         'name'        =>  'Nome do produto 2',
                         'number'      => 131231,
@@ -118,6 +119,50 @@ class ProdutoController extends Controller
             return "Inserido com sucesso. ID: {$insert->id}";
         else
             return 'Falha ao inserir.';
-         
+         * */
+        /*
+         $prod = $this->product->find(5);
+         $prod->name = 'Update 2';
+         $prod->number = 797890;
+//         $prod->active = true;
+//         $prod->category = 'eletronicos';
+//         $prod->description = 'Description Update.';
+         $update = $prod->save();
+         if($update){
+            return "<h1>Produto, ID: {$prod->id} atualizado com sucesso.</h1>";
+         } else {
+            return "<h1>Falha ao atualizar produto, ID: {$prod->id} atualizado com sucesso.</h1>";
+         }
+         * 
+         */
+        /*
+        $prod = $this->product->find(6);
+        $update = $prod->update([
+                        "name"        =>  "Update do item ID 6 '
+            . '- teste 'de SQL' Injection",
+                        'number'      => 6764654,
+                        'active'      => true
+        ]);
+        if($update){
+            return "<h1>Produto, ID: {$prod->id} atualizado com sucesso.</h1>";
+         } else {
+            return "<h1>Falha ao atualizar produto, ID: {$prod->id} atualizado com sucesso.</h1>";
+         }
+         * 
+         */
+         $update = $this->product
+                 ->where('number', 6764654)
+                 ->update([
+                        "name"        =>  "Update com Where e coluna do produto 
+                            ID 6 + '
+            . '- teste 'de SQL' Injection",
+                        'number'      => 464646,
+                        'active'      => false
+        ]);
+        if($update){
+            return "<h1>Produto atualizado com sucesso.</h1>";
+         } else {
+            return "<h1>Falha ao atualizar produto.</h1>";
+         }
     }
 }
