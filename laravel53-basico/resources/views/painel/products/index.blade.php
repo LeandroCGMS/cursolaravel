@@ -2,8 +2,10 @@
 
 @section('content')
     <h1 class="title-pg">Listagem dos Produtos</h1>
-    <a href="" class="btn btn-primary btn-add"><span class="glyphicon glyphicon-plus
-"></span> &nbsp;Cadastrar</a>
+    <a href="{{ route('produtos.create') }}" class="btn btn-primary btn-add">
+        <span class="glyphicon glyphicon-plus">
+        </span> &nbsp;Cadastrar
+    </a>
 <table class=" table table-striped">
     <tr>
         <th>Nome</th>
