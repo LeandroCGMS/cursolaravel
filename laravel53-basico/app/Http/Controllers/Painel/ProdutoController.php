@@ -46,6 +46,10 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
+        //dd($request->only(['name','number']));
+        //dd($request->except('_token', 'category'));
+        //dd($request->input('name'));
         return '<h1>Cadastrando...</h1>';
     }
 
