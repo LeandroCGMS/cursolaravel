@@ -59,8 +59,11 @@ class ProdutoController extends Controller
 //            $dataForm['active'] = 1;
         $dataForm['active'] = ( !isset($dataForm['active']) ) ? 0 : 1;
         
+        // Valida dos dados
+        $this->validate($request, $this->product->rules);
+        
         // Faz o Cadastro
-        $insert = $this->product->insert($dataForm);
+        $insert = $this->product->create($dataForm);
         
         if($insert){
             return redirect()->route('produtos.index');
