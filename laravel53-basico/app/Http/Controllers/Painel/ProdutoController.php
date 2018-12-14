@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Painel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Painel\Product;
+use App\Http\Requests\Painel\ProductFormRequest;
 
 class ProdutoController extends Controller
 {
@@ -44,7 +45,7 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductFormRequest $request)
     {
         //dd($request->all());
         //dd($request->only(['name','number']));
@@ -60,7 +61,7 @@ class ProdutoController extends Controller
         $dataForm['active'] = ( !isset($dataForm['active']) ) ? 0 : 1;
         
         // Valida dos dados
-        $messages = [
+        /*$messages = [
            'name.required'      => 'O campo nome é de preenchimento obrigatório.',
            'number.numeric'     => 'Precisa ser apenas números',
            'number.required'    =>'O campo number é de preenchimento obrigatório.',
@@ -72,7 +73,8 @@ class ProdutoController extends Controller
                     ->route('produtos.create')
                     ->withErrors($validate)
                     ->withInput();
-        }
+        }*/
+        
         
         // Faz o Cadastro
         $insert = $this->product->create($dataForm);

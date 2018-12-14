@@ -41,7 +41,7 @@
     </div>
 
     <div class="form-group">
-        <textarea name="description" placeholder="Descrição do Produto">
+        <textarea name="description" class="form-control" placeholder="Descrição do Produto">
         {{old('description')}}</textarea>
     </div>
 
