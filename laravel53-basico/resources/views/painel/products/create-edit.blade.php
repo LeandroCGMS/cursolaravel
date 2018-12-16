@@ -16,19 +16,20 @@
     {!! csrf_field() !!}
     <div class="form-group">
         <input type='text' name='name' placeholder="Nome:" class="form-control" 
-               value="{{ old('name') }}">
+               value="{{ $product->name or old('name') }}">
     </div>
 
     <div class="form-group">
         <label>
-            <input type='checkbox' name='active' value="1">
+            <input type='checkbox' name='active' value="1" 
+                   @if(isset($product) && $product->active == '1')checked @endif>
             Ativo?
         </label>
     </div>
 
     <div class="form-group">
         <input type='number' min="0" name='number' placeholder="Número:" class="form-control"
-               value="{{ old('number') }}">
+               value="{{ $product->number or old('number') }}">
     </div>
 
     <div class="form-group">
@@ -42,7 +43,7 @@
 
     <div class="form-group">
         <textarea name="description" class="form-control" placeholder="Descrição do Produto">
-        {{old('description')}}</textarea>
+        {{$product->description or old('description')}}</textarea>
     </div>
 
 
