@@ -11,12 +11,18 @@
         @endforeach
     </div>
 @endif
-<form class="form" method="post" action="{{ route('produtos.store') }}">
+@if( isset($product) )
+    <form class="form" method="post" action="{{ route('produtos.update', $product->id) }}">
+        {!! method_field('PUT') !!}
+@else
+    <form class="form" method="post" action="{{ route('produtos.store') }}">
+@endif
+
     <!--<input type="hidden" value="{{ csrf_token() }}" name="_token">-->
     {!! csrf_field() !!}
     <div class="form-group">
         <input type='text' name='name' placeholder="Nome:" class="form-control" 
-               value="{{ $product->name or old('name') }}">
+               value="{{ isset($product)?$product->name:old('name') }}">
     </div>
 
     <div class="form-group">
@@ -29,25 +35,28 @@
 
     <div class="form-group">
         <input type='number' min="0" name='number' placeholder="Número:" class="form-control"
-               value="{{ $product->number or old('number') }}">
+               value="{{ isset($product)?$product->number:old('number') }}">
     </div>
 
     <div class="form-group">
         <select name="category" class="form-control">
             <option value="">Escolha a Categoria</option>
             @foreach($categories as $category)
-            <option  class="form-control" value="{{ $category }}">{{ $category }}</option>
+            <option  class="form-control" value="{{ $category }}"
+                     @if( isset($product) && $product->category == $category)
+                        selected
+                     @endif
+                     >{{ $category }}</option>
             @endforeach
         </select>
     </div>
 
     <div class="form-group">
         <textarea name="description" class="form-control" placeholder="Descrição do Produto">
-        {{$product->description or old('description')}}</textarea>
+        {{ isset($product) ? $product->description : old('description')}}</textarea>
     </div>
 
-
-
-    <button class="btn btn-primary">Cadastrar</button>
+    <button class="btn btn-primary">Enviar</button>
+       
 </form>
 @endsection

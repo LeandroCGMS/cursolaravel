@@ -1,7 +1,7 @@
 @extends('painel.templates.template')
 
 @section('content')
-    <h1 class="title-pg">Listagem dos Produtos</h1>
+    <h1 class="title-pg">{{ isset($title) ? $title : '' }}</h1>
     <a href="{{ route('produtos.create') }}" class="btn btn-primary btn-add">
         <span class="glyphicon glyphicon-plus">
         </span> &nbsp;Cadastrar
