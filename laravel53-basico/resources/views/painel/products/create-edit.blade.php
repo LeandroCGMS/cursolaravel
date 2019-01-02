@@ -3,7 +3,7 @@
 @section('content')
 <h1 class="title-pg">
     <a href="{{route('produtos.index')}}"><span class="glyphicon glyphicon-fast-backward
-"></span> Voltar</a>
+"></span></a> Voltar
     Gestão Produto: <b>{{ isset($product) ? $product->name : 'Novo' }}</b>
 </h1>
 @if( isset($errors) && count($errors) > 0 )
