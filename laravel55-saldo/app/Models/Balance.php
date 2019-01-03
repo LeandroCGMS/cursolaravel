@@ -29,7 +29,7 @@ class Balance extends Model
         if($deposit && $historic){
             DB::commit();
             return [
-                'succes' => true,
+                'success' => true,
                 'message' => 'Sucesso ao recarregar.'
             ];
         } else {
