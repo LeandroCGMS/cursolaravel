@@ -23,6 +23,12 @@
             Sacar
             </a>
             @endif
+            @if($amount > 0)
+            <a href="{{route('confirm.transfer')}}" class="btn btn-info">
+            <i class="fa fa-exchange aria-hidden="true""></i>
+                Transferir
+            </a>
+            @endif
         </div>
         <div class="box-body">
         @include('admin.includes.alerts')
